@@ -293,7 +293,7 @@ def train(args):
 if __name__ == '__main__':
     args = parse_args()
     # modelarts
-    mox.file.copy_parallel(src_url= os.path.join(args.data_url, 'imagenet') , dst_url= args.data_dir)
+    mox.file.copy_parallel(src_url= os.path.join(args.data_url) , dst_url= args.data_dir)
     train(args)
     # modelarts
     mox.file.copy_parallel(src_url= args.ckpt_save_dir, dst_url=os.path.join(args.train_url, 'ckpt'))
