@@ -196,8 +196,20 @@ def create_parser():
     group.add_argument('--reduction', type=str, default='mean',
                        help='Type of reduction to be applied to loss (default="mean")')
 
+    # modelarts
+    group = parser.add_argument_group('modelarts')
+    group.add_argument('--device_target', type=str, default='Ascend')
+    group.add_argument('--multi_data_url',
+                       help='path to multi dataset',
+                       default= '/cache/data/')
+    group.add_argument('--data_url',
+                       help='path to dataset',
+                       default= '/cache/data/')
+    group.add_argument('--ckpt_url', help='pre_train_model path in obs')
+    group.add_argument('--train_url',
+                       help='model folder to save/load',
+                       default= '/cache/output/')
     return parser_config, parser
-
 
 def parse_args():
     parser_config, parser = create_parser()
